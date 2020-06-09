@@ -1,14 +1,15 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
-    <div class="book-wrapper">
+    <h1>快书，点亮世界 点亮你！</h1>
+    <div class="books-wrapper">
       <div class="book-item" v-for="(item, index) in items" :key="index">
         <!-- <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}"></div> -->
         <a href="http://www.baidu.com">
-          <figure class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}"></figure>
+          <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}"></div>
         </a>
       </div>
     </div>
+    <div class="navigation"></div>
   </div>
 </template>
 
@@ -35,23 +36,31 @@ export default {
 
 <style lang="scss" rel="stylesheet/scss" scoped>
 
- // @import url("../assets/stles/global");
+@import "../assets/styles/global";
 
   .about {
-    .book-wrapper {
+    .books-wrapper {
       display: flex;
-      flex-wrap: wrap;
-      border: 0.0625rem solid red;
+      flex-flow: row wrap;
+      //align-items: center;
+      justify-content: center;
+      //border: 0.0625rem solid red;
+      background-color: #CCCCCC;
       .book-item {
-        background-color: blue;
         .one-book {
-          width: 18.75rem;
-          height: 25rem;
+          width: 15rem;
+          height: 20rem;
           background-repeat: no-repeat;
           background-size: 100% 100%;
-          border: 0.1875rem solid #ccc;
+          border: 0.5rem solid #CCCCCC;
+          box-sizing: border-box;
         }
       }
+    }
+    .navigation {
+      height: 2.5rem;
+      width: 100%;
+      background-color: purple;
     }
   }
 </style>
