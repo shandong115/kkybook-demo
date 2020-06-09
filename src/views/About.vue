@@ -4,7 +4,9 @@
     <div class="book-wrapper">
       <div class="book-item" v-for="(item, index) in items" :key="index">
         <!-- <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}"></div> -->
-        <figure class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}"></figure>
+        <a href="http://www.baidu.com">
+          <figure class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}"></figure>
+        </a>
       </div>
     </div>
   </div>
@@ -38,23 +40,16 @@ export default {
   .about {
     .book-wrapper {
       display: flex;
-      justify-content: space-between;
-      width: 100%
-      flex-wrap wrap;
+      flex-wrap: wrap;
       border: 0.0625rem solid red;
       .book-item {
-        //display: flex;
-        flex-basis: auto;
         background-color: blue;
-        //flex-direction: column;
-        //width: 19.375rem;
         .one-book {
-          //display: flex;
           width: 18.75rem;
           height: 25rem;
           background-repeat: no-repeat;
           background-size: 100% 100%;
-          border: 0.3125rem solid #ccc;
+          border: 0.1875rem solid #ccc;
         }
       }
     }
