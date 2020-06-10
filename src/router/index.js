@@ -5,10 +5,25 @@ import Home from '../views/Home.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  /* {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/page',
+    name: 'OnePage',
+    component: Home
+  }, */
   {
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/page',
+    component: Home,
+    props: (route) => ({ query: route.query.p })
   },
   {
     path: '/about',
