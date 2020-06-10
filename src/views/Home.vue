@@ -3,7 +3,7 @@
     <h1>快书，点亮世界 点亮你！</h1>
     <div class="books-wrapper">
       <div class="book-item" v-for="(item, index) in items" :key="index">
-        <a href="http://www.baidu.com">
+        <a :href="item.img_path">
           <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}"></div>
         </a>
       </div>
