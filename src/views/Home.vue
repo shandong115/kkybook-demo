@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <h1>快书，点亮世界 点亮你！</h1>
+    <span class="slogen">快书，点亮世界，点亮你！</span>
     <div class="books-wrapper">
-      <div class="book-item" v-for="(item, index) in items" :key="index">
+      <div class="book-item" v-for="(item, index) in pageItems" :key="index">
         <a :href="item.img_path">
           <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}"></div>
         </a>
@@ -11,9 +11,9 @@
     <Paginate
             :v-model="currentPage"
             :force-page=currentPage
-            :page-count="total"
-            :margin-pages="2"
-            :page-range="5"
+            :page-count=totalPages
+            :margin-pages=2
+            :page-range=5
             :container-class="'pagination'"
             :page-class="'page-item'"
             :page-link-class="'page-link-item'"
@@ -32,8 +32,10 @@
 <script>
 import { getOnePageBooks } from '@/api/index'
 import Paginate from 'vuejs-paginate'
+import { bookCityMixin } from '../utils/mixin'
 
 export default {
+  mixins: [bookCityMixin],
   inject: ['reload'],
   methods: {
     clickCallback (pagNum) {
@@ -45,25 +47,24 @@ export default {
   components: {
     Paginate
   },
-  data () {
-    return {
-      total: 0,
-      currentPage: 1,
-      items: null
-    }
-  },
   mounted () {
     var p = parseInt(this.$route.query.p)
     console.log('p: ' + p)
     if (!p || p <= 0) p = 1
-    this.currentPage = p
+    this.setCurrentPage(p)
+    console.log('cp: ' + parseInt(this.currentPage))
     getOnePageBooks(this.currentPage).then(response => {
       if (response && response.status === 200) {
         const data = response.data
-        this.items = data.data.detail
+        /* this.items = data.data.detail
         this.total = data.data.total
-        this.currentPage = data.data.currentPage
-        console.log('rcv success! length = ' + this.items.length)
+        this.currentPage = data.data.currentPage */
+        console.log('length: ss' + data.data.detail.length)
+        this.setCurrentPage(data.data.currentPage)
+        console.log('cp: ' + this.currentPage)
+        this.setPageItems(data.data.detail)
+        this.setTotalPages(data.data.totalPages)
+        console.log('rcv success! length = ' + this.pageItems.length)
       }
     })
   }
@@ -75,18 +76,25 @@ export default {
 @import "../assets/styles/global";
 
   .home {
+    .slogen{
+      font-size: px2rem(15);
+      @include center;
+      border-bottom: px2rem(2) solid purple;
+      padding-bottom: px2rem(15);
+     // background: #7d8188;
+    }
     .books-wrapper {
       display: flex;
       flex-flow: row wrap;
       justify-content: center;
-      background-color: #CCCCCC;
+      background-color: #EEEEEE;
       .book-item {
         .one-book {
-          width: 26.25rem;
-          height: 35rem;
+          width: px2rem(195);
+          height: px2rem(260);
           background-repeat: no-repeat;
           background-size: 100% 100%;
-          border: 0.5rem solid #CCCCCC;
+          border: px2rem(4) solid #EEEEEE;
           box-sizing: border-box;
         }
       }
@@ -94,7 +102,7 @@ export default {
     .pagination {
       display: flex;
       @include center;
-      height: 6.25rem;
+      height: px2rem(50);
       width: 100%;
       background-color: white;
     }
