@@ -26,9 +26,10 @@ const book = {
   shelfTitleVisible: state => state.store.shelfTitleVisible,
   shelfCategory: state => state.store.shelfCategory,
   currentType: state => state.store.currentType,
-  totalPages: state => state.store.totalPages,
-  currentPage: state => state.store.currentPage,
-  pageItems: state => state.store.pageItems
+  totalPages: state => state.bookcity.totalPages,
+  currentPage: state => state.bookcity.currentPage,
+  pageItems: state => state.bookcity.pageItems/* ,
+  isRouterAlive: state => state.bookcity.isRouterAlive */
 }
 
 export default book

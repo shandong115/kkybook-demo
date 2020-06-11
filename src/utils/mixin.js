@@ -2,7 +2,7 @@ import { mapGetters, mapActions } from 'vuex'
 import { themeList, addCss, removeAllCss, getReadTimeByMinute } from './book'
 import { getBookmark, saveLocation/* , getBookShelf, saveBookShelf */ } from './localStorage'
 import { gotoBookDetail, appendAddToShelf, computeId, removeAddFromShelf } from './store'
-/* import { shelf } from '../api/store' */
+// import { shelf } from '../api/store'
 
 export const storeShelfMixin = {
   computed: {
@@ -219,14 +219,16 @@ export const bookCityMixin = {
     ...mapGetters([
       'totalPages',
       'currentPage',
-      'pageItems'
+      'pageItems'/* ,
+      'isRouterAlive' */
     ])
   },
   methods: {
     ...mapActions([
       'setTotalPages',
       'setCurrentPage',
-      'setPageItems'
+      'setPageItems',
+      'setIsRouterAlive'
     ])
   }
 }

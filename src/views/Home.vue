@@ -10,10 +10,11 @@
     </div>
     <Paginate
             :v-model="currentPage"
-            :force-page=currentPage
-            :page-count=totalPages
-            :margin-pages=2
-            :page-range=5
+            :force-page="currentPage"
+            :value="currentPage"
+            :page-count="totalPages"
+            :margin-pages="2"
+            :page-range="5"
             :container-class="'pagination'"
             :page-class="'page-item'"
             :page-link-class="'page-link-item'"
@@ -32,7 +33,7 @@
 <script>
 import { getOnePageBooks } from '@/api/index'
 import Paginate from 'vuejs-paginate'
-import { bookCityMixin } from '../utils/mixin'
+import { bookCityMixin } from '@/utils/mixin'
 
 export default {
   mixins: [bookCityMixin],
@@ -52,18 +53,15 @@ export default {
     console.log('p: ' + p)
     if (!p || p <= 0) p = 1
     this.setCurrentPage(p)
-    console.log('cp: ' + parseInt(this.currentPage))
+    console.log('cp: ' + this.currentPage)
     getOnePageBooks(this.currentPage).then(response => {
       if (response && response.status === 200) {
         const data = response.data
-        /* this.items = data.data.detail
-        this.total = data.data.total
-        this.currentPage = data.data.currentPage */
         console.log('length: ss' + data.data.detail.length)
-        this.setCurrentPage(data.data.currentPage)
         console.log('cp: ' + this.currentPage)
+        this.setCurrentPage(parseInt(data.data.currentPage))
         this.setPageItems(data.data.detail)
-        this.setTotalPages(data.data.totalPages)
+        this.setTotalPages(parseInt(data.data.totalPages))
         console.log('rcv success! length = ' + this.pageItems.length)
       }
     })

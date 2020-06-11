@@ -88,7 +88,10 @@ const actions = {
   },
   setPageItems: ({ commit }, pageItems) => {
     return commit('SET_PAGE_ITEMS', pageItems)
-  }
+  }/* ,
+  setIsRouterAlive: ({ commit }, isRouterAlive) => {
+    return commit('SET_IS_ROUTER_ALIVE', isRouterAlive)
+  } */
 }
 
 export default actions
