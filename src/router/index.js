@@ -17,10 +17,15 @@ const routes = [
     name: 'OnePage',
     component: Home
   }, */
-  {
+  /* {
     path: '/',
     name: 'Home',
     redirect: '/ebook'
+  }, */
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
   },
   {
     path: '/page',
