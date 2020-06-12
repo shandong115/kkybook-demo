@@ -28,8 +28,8 @@ const book = {
   currentType: state => state.store.currentType,
   totalPages: state => state.bookcity.totalPages,
   currentPage: state => state.bookcity.currentPage,
-  pageItems: state => state.bookcity.pageItems/* ,
-  isRouterAlive: state => state.bookcity.isRouterAlive */
+  pageItems: state => state.bookcity.pageItems,
+  isRouterAlive: state => state.bookcity.isRouterAlive
 }
 
 export default book

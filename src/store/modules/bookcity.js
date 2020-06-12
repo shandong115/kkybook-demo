@@ -14,10 +14,10 @@ const bookcity = {
     },
     SET_PAGE_ITEMS: (state, pageItems) => {
       state.pageItems = pageItems
-    }/* ,
+    },
     SET_IS_ROUTER_ALIVE: (state, isRouterAlive) => {
       state.isRouterAlive = isRouterAlive
-    } */
+    }
   }
 }
 

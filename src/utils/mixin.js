@@ -219,8 +219,8 @@ export const bookCityMixin = {
     ...mapGetters([
       'totalPages',
       'currentPage',
-      'pageItems'/* ,
-      'isRouterAlive' */
+      'pageItems',
+      'isRouterAlive'
     ])
   },
   methods: {
@@ -229,6 +229,13 @@ export const bookCityMixin = {
       'setCurrentPage',
       'setPageItems',
       'setIsRouterAlive'
-    ])
+    ]),
+    reloadRouterView () {
+      this.setIsRouterAlive(false)
+      this.$nextTick(function() {
+        this.setIsRouterAlive(true)
+        setTimeout(() => window.scrollTo(0, 0), 15)
+      })
+    }
   }
 }

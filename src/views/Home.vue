@@ -37,12 +37,11 @@ import { bookCityMixin } from '@/utils/mixin'
 
 export default {
   mixins: [bookCityMixin],
-  inject: ['reload'],
   methods: {
     clickCallback (pagNum) {
       console.log('clicked: ' + pagNum)
       this.$router.push({ path: '/page', query: { p: pagNum } })
-      this.reload()
+      this.reloadRouterView()
     }
   },
   components: {

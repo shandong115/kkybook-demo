@@ -9,29 +9,9 @@
 </template>
 
 <script>
+import { bookCityMixin } from '@/utils/mixin'
 export default {
-  name: 'App',
-  provide () {
-    return {
-      reload: this.reload
-    }
-  },
-  data() {
-    return {
-      isRouterAlive: true
-    }
-  },
-  methods: {
-    reload () {
-      console.log('reloading...' + this.isRouterAlive)
-      this.isRouterAlive = false
-      console.log('reloading...' + this.isRouterAlive)
-      this.$nextTick(function() {
-        this.isRouterAlive = true
-        console.log('reloading...' + this.isRouterAlive)
-      })
-    }
-  }
+  mixins: [bookCityMixin]
 }
 document.addEventListener('DOMContentLoaded', () => {
   // 获取html元素
