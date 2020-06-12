@@ -3,9 +3,7 @@
     <span class="slogen">快书，点亮世界，点亮你！</span>
     <div class="books-wrapper">
       <div class="book-item" v-for="(item, index) in pageItems" :key="index">
-        <a @click="HandlerBookClick(item.name)">
-          <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}"></div>
-        </a>
+        <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}" @click="HandlerBookClick(item.name)"></div>
       </div>
     </div>
     <div class="pageNav">
@@ -102,6 +100,7 @@ export default {
           background-size: 100% 100%;
           border: px2rem(4) solid #EEEEEE;
           box-sizing: border-box;
+          cursor: pointer;
         }
       }
     }

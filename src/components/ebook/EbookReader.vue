@@ -261,10 +261,12 @@
       const fileName = book
       getLocalForage(fileName, (err, blob) => {
         if (!err && blob) {
+          console.log('get local forage...')
           this.setFileName(book).then(() => {
             this.initEpub(blob)
           })
         } else {
+          console.log('get local forage err..')
           this.setFileName(book).then(() => {
             const url = process.env.VUE_APP_EPUB_URL + '/' + this.fileName
             console.log('book url: ' + url)

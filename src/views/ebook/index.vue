@@ -13,6 +13,10 @@
     <ebook-bookmark></ebook-bookmark>
     <!-- 电子书页脚组件 -->
     <ebook-footer></ebook-footer>
+    <!-- 等待加载 -->
+    <div class="waiting-loader" v-if="!bookAvailable">
+      <vue-loading type="spiningDubbles"></vue-loading>
+    </div>
   </div>
 </template>
 
@@ -25,6 +29,7 @@
   import EbookFooter from '../../components/ebook/EbookFooter'
   import { getReadTime, saveReadTime } from '../../utils/localStorage'
   import { ebookMixin } from '../../utils/mixin'
+  import { VueLoading } from 'vue-loading-template'
 
   export default {
     mixins: [ebookMixin],
@@ -34,7 +39,8 @@
       EbookMenu,
       EbookBookmark,
       EbookHeader,
-      EbookFooter
+      EbookFooter,
+      VueLoading
     },
     watch: {
       // 监听用户下拉屏幕时滚动条的y轴数值
@@ -105,5 +111,15 @@
     left: 0;
     width: 100%;
     height: 100%;
+    .waiting-loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 250;
+      display: flex;
+      @include center;
+    }
   }
 </style>

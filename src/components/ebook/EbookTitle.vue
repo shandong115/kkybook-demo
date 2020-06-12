@@ -26,6 +26,7 @@
     mixins: [ebookMixin],
     methods: {
       back() {
+        this.resetEbookMixin()
         this.$router.go(-1)
       }
     }

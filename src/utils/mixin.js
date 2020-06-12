@@ -210,6 +210,22 @@ export const ebookMixin = {
     },
     getReadTimeText() {
       return this.$t('book.haveRead').replace('$1', getReadTimeByMinute(this.fileName))
+    },
+    resetEbookMixin() {
+      this.setFileName('')
+      this.setBookAvailable(false)
+      this.setProgress(0)
+      this.setSection(0)
+      this.setIsPaginating(true)
+      this.setCurrentBook(null)
+      this.setNavigation(null)
+      this.setCover(null)
+      this.setMetadata(null)
+      this.setPaginate('')
+      this.setPagelist(null)
+      this.setIsBookmark(false)
+      this.setOffsetY(0)
+      this.hideTitleAndMenu()
     }
   }
 }
