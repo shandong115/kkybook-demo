@@ -3,30 +3,32 @@
     <span class="slogen">快书，点亮世界，点亮你！</span>
     <div class="books-wrapper">
       <div class="book-item" v-for="(item, index) in pageItems" :key="index">
-        <a :href="item.img_path">
+        <a @click="HandlerBookClick(item.name)">
           <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}"></div>
         </a>
       </div>
     </div>
-    <Paginate
-            :v-model="currentPage"
-            :force-page="currentPage"
-            :value="currentPage"
-            :page-count="totalPages"
-            :margin-pages="2"
-            :page-range="5"
-            :container-class="'pagination'"
-            :page-class="'page-item'"
-            :page-link-class="'page-link-item'"
-            :prev-class="'prev-item'"
-            :prev-link-class="'prev-link-item'"
-            :next-class="'next-item'"
-            :next-link-class="'next-link-item'"
-            :break-view-class="'break-view'"
-            :break-view-link-class="'break-view-link'"
-            :first-last-button="true"
-            :click-handler="clickCallback"
-          ></Paginate>
+    <div class="pageNav">
+      <Paginate
+              :v-model="currentPage"
+              :force-page="currentPage"
+              :value="currentPage"
+              :page-count="totalPages"
+              :margin-pages="2"
+              :page-range="5"
+              :container-class="'pagination'"
+              :page-class="'page-item'"
+              :page-link-class="'page-link-item'"
+              :prev-class="'prev-item'"
+              :prev-link-class="'prev-link-item'"
+              :next-class="'next-item'"
+              :next-link-class="'next-link-item'"
+              :break-view-class="'break-view'"
+              :break-view-link-class="'break-view-link'"
+              :first-last-button="true"
+              :click-handler="clickCallback"
+            ></Paginate>
+    </div>
   </div>
 </template>
 
@@ -42,6 +44,12 @@ export default {
       console.log('clicked: ' + pagNum)
       this.$router.push({ path: '/page', query: { p: pagNum } })
       this.reloadRouterView()
+    },
+    HandlerBookClick(name) {
+      console.log('open book ' + name + ' ....')
+      const routerPath = '/ebook/' + name + '.epub'
+      console.log('routePath: ' + routerPath)
+      this.$router.push({ path: routerPath })
     }
   },
   components: {
@@ -73,6 +81,7 @@ export default {
 @import "../assets/styles/global";
 
   .home {
+    // overflow: auto;
     .slogen{
       font-size: px2rem(15);
       @include center;
@@ -96,12 +105,15 @@ export default {
         }
       }
     }
-    .pagination {
+    .pageNav {
       display: flex;
       @include center;
-      height: px2rem(50);
+      height: px2rem(100);
       width: 100%;
-      background-color: white;
+      .pagination {
+        height: px2rem(40);
+        background-color: white;
+      }
     }
   }
 </style>

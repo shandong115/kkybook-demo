@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link to="/">书城</router-link> |
       <router-link to="/about">书架</router-link>
-    </div>
+    </div> -->
     <router-view v-if="isRouterAlive"/>
   </div>
 </template>
@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
   #app {
     width: 100%;
     height: 100%;
-    background: #CCCCCC;
-    overflow: hidden;
+    // background: #CCCCCC;
+    overflow: auto;
   }
 #nav {
   padding: px2rem(10);

@@ -10,7 +10,7 @@ const store = {
     currentType: 1 // 书架列表为1，书架分类列表为2
   },
   mutations: {
-    /*    SET_HOT_SEARCH_OFFSETY(state, y) {
+    SET_HOT_SEARCH_OFFSETY(state, y) {
       state.hotSearchOffsetY = y
     },
     SET_FLAP_CARD_VISIBLE(state, visible) {
@@ -33,7 +33,7 @@ const store = {
     },
     SET_CURRENT_TYPE(state, type) {
       state.currentType = type
-    } */
+    }
   }
 }
 

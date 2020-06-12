@@ -35,7 +35,7 @@ const actions = {
   setCurrentBook: ({ commit }, book) => {
     return commit('SET_CURRENT_BOOK', book)
   },
-  /*  setNavigation: ({ commit }, navigation) => {
+  setNavigation: ({ commit }, navigation) => {
     return commit('SET_NAVIGATION', navigation)
   },
   setCover: ({ commit }, cover) => {
@@ -79,7 +79,7 @@ const actions = {
   },
   setCurrentType({ commit }, type) {
     return commit('SET_CURRENT_TYPE', type)
-  } */
+  },
   setTotalPages: ({ commit }, totalPages) => {
     return commit('SET_TOTAL_PAGES', totalPages)
   },
