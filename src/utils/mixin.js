@@ -236,7 +236,8 @@ export const bookCityMixin = {
       'totalPages',
       'currentPage',
       'pageItems',
-      'isRouterAlive'
+      'isRouterAlive',
+      'item'
     ])
   },
   methods: {
@@ -244,7 +245,8 @@ export const bookCityMixin = {
       'setTotalPages',
       'setCurrentPage',
       'setPageItems',
-      'setIsRouterAlive'
+      'setIsRouterAlive',
+      'setItem'
     ]),
     reloadRouterView () {
       this.setIsRouterAlive(false)

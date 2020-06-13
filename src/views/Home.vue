@@ -3,7 +3,7 @@
     <span class="slogen">快书，点亮世界，点亮你！</span>
     <div class="books-wrapper">
       <div class="book-item" v-for="(item, index) in pageItems" :key="index">
-        <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}" @click="HandlerBookClick(item.book_id)"></div>
+        <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}" @click="HandlerBookClick(item)"></div>
       </div>
     </div>
     <div class="pageNav">
@@ -40,13 +40,14 @@ export default {
   methods: {
     clickCallback (pagNum) {
       console.log('clicked: ' + pagNum)
-      this.$router.push({ path: '/page', query: { p: pagNum } })
       this.reloadRouterView()
+      this.$router.push({ path: '/page', query: { p: pagNum } })
     },
-    HandlerBookClick(name) {
-      console.log('open book ' + name + ' ....')
-      const routerPath = '/ebook/' + name + '.epub'
+    HandlerBookClick(item) {
+      console.log('open book ' + item.book_id + ' ....')
+      const routerPath = '/ebook/' + item.book_id + '.epub'
       console.log('routePath: ' + routerPath)
+      this.setItem(item)
       this.$router.push({ path: routerPath })
     }
   },

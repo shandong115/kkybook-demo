@@ -15,7 +15,13 @@
     <ebook-footer></ebook-footer>
     <!-- 等待加载 -->
     <div class="waiting-loader" v-if="!bookAvailable">
-      <vue-loading type="spiningDubbles"></vue-loading>
+      <div class="item-msg">
+        <span class="book-msg">{{item.title}}</span>
+        <span class="book-msg">{{item.author}}</span>
+        <span class="book-msg">文件稍大（{{item.size}}），正在为您拼命加载 。。。</span>
+      </div>
+      <vue-loading type="spin" color="#222"
+            :size="{ width: '50px', height: '50px' }"></vue-loading>
     </div>
   </div>
 </template>
@@ -28,11 +34,11 @@
   import EbookHeader from '../../components/ebook/EbookHeader'
   import EbookFooter from '../../components/ebook/EbookFooter'
   import { getReadTime, saveReadTime } from '../../utils/localStorage'
-  import { ebookMixin } from '../../utils/mixin'
+  import { ebookMixin, bookCityMixin } from '../../utils/mixin'
   import { VueLoading } from 'vue-loading-template'
 
   export default {
-    mixins: [ebookMixin],
+    mixins: [ebookMixin, bookCityMixin],
     components: {
       EbookReader,
       EbookTitle,
@@ -119,7 +125,25 @@
       height: 100%;
       z-index: 250;
       display: flex;
+      flex-direction: column;
       @include center;
+      .item-msg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        font-size: px2rem(20);
+        @include center;
+        .book-msg {
+          padding-top: px2rem(15);
+          padding-left: px2rem(50);
+          padding-right: px2rem(50);
+        }
+      }
     }
   }
 </style>

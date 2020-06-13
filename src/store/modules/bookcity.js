@@ -3,7 +3,8 @@ const bookcity = {
     totalPages: 0,
     currentPage: 1,
     pageItems: null,
-    isRouterAlive: true
+    isRouterAlive: true,
+    item: null
   },
   mutations: {
     SET_TOTAL_PAGES: (state, totalPages) => {
@@ -17,6 +18,9 @@ const bookcity = {
     },
     SET_IS_ROUTER_ALIVE: (state, isRouterAlive) => {
       state.isRouterAlive = isRouterAlive
+    },
+    SET_ITEM: (state, item) => {
+      state.item = item
     }
   }
 }

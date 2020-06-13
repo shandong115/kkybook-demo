@@ -91,6 +91,9 @@ const actions = {
   },
   setIsRouterAlive: ({ commit }, isRouterAlive) => {
     return commit('SET_IS_ROUTER_ALIVE', isRouterAlive)
+  },
+  setItem: ({ commit }, item) => {
+    return commit('SET_ITEM', item)
   }
 }
 

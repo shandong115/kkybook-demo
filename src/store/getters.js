@@ -29,7 +29,8 @@ const book = {
   totalPages: state => state.bookcity.totalPages,
   currentPage: state => state.bookcity.currentPage,
   pageItems: state => state.bookcity.pageItems,
-  isRouterAlive: state => state.bookcity.isRouterAlive
+  isRouterAlive: state => state.bookcity.isRouterAlive,
+  item: state => state.bookcity.item
 }
 
 export default book
