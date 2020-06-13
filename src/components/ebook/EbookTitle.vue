@@ -2,7 +2,7 @@
   <transition name="slide-down">
     <div class="title-wrapper" v-show="menuVisible">
       <div class="left">
-        <span class="icon-back" @click="back"></span>
+        <span class="icon-back" @click="goBack"></span>
       </div>
       <div class="right">
         <div class="icon-wrapper">
@@ -25,9 +25,9 @@
   export default {
     mixins: [ebookMixin],
     methods: {
-      back() {
+      goBack() {
         this.resetEbookMixin()
-        this.$router.go(-1)
+        window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
       }
     }
   }
