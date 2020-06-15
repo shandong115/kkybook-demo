@@ -2,7 +2,7 @@
 <template>
   <div class="ebook" ref="ebook">
     <!-- 电子书页眉组件 -->
-    <ebook-header></ebook-header>
+    <!-- <ebook-header></ebook-header> -->
     <!-- 阅读器标题组件 -->
     <ebook-title></ebook-title>
     <!-- 阅读器组件 -->
@@ -12,7 +12,7 @@
     <!-- 阅读器书签组件 -->
     <ebook-bookmark></ebook-bookmark>
     <!-- 电子书页脚组件 -->
-    <ebook-footer></ebook-footer>
+    <!-- <ebook-footer></ebook-footer> -->
     <!-- 等待加载 -->
     <div class="waiting-loader" v-if="!bookAvailable">
       <div class="item-msg">
@@ -31,8 +31,8 @@
   import EbookTitle from '../../components/ebook/EbookTitle'
   import EbookMenu from '../../components/ebook/EbookMenu'
   import EbookBookmark from '../../components/ebook/EbookBookmark'
-  import EbookHeader from '../../components/ebook/EbookHeader'
-  import EbookFooter from '../../components/ebook/EbookFooter'
+/*  import EbookHeader from '../../components/ebook/EbookHeader'
+  import EbookFooter from '../../components/ebook/EbookFooter' */
   import { getReadTime, saveReadTime } from '../../utils/localStorage'
   import { ebookMixin, bookCityMixin } from '../../utils/mixin'
   import { VueLoading } from 'vue-loading-template'
@@ -44,8 +44,8 @@
       EbookTitle,
       EbookMenu,
       EbookBookmark,
-      EbookHeader,
-      EbookFooter,
+      /* EbookHeader,
+      EbookFooter, */
       VueLoading
     },
     watch: {
@@ -126,6 +126,7 @@
       z-index: 250;
       display: flex;
       flex-direction: column;
+      background-color: rgba($color: #ccc, $alpha: 1.0);
       @include center;
       .item-msg {
         position: absolute;

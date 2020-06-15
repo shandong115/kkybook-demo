@@ -1,13 +1,11 @@
 <template>
   <div class="ebook-reader">
     <div id="read"></div>
-    <div class="ebook-reader-mask"
-         @click="onMaskClick"
-         @touchmove="move"
-         @touchend="moveEnd"
-         @mousedown.left="onMouseEnter"
-         @mousemove.left="onMouseMove"
-         @mouseup.left="onMouseEnd"></div>
+    <div class="ebook-reader-mask">
+         <div class="left" @click="prevPage"></div>
+         <div class="center" @click="toggleTitleAndMenu"></div>
+         <div class="right" @click="nextPage"></div>
+    </div>
   </div>
 </template>
 
@@ -101,17 +99,17 @@
       },
       prevPage() {
         if (this.rendition) {
-          this.rendition.prev().then(() => {
+          this.rendition.prev()/* .then(() => {
             this.refreshLocation()
-          })
+          }) */
           this.hideTitleAndMenu()
         }
       },
       nextPage() {
         if (this.rendition) {
-          this.rendition.next().then(() => {
+          this.rendition.next()/* .then(() => {
             this.refreshLocation()
-          })
+          }) */
           this.hideTitleAndMenu()
         }
       },
@@ -155,8 +153,8 @@
       initRendition() {
         this.rendition = this.book.renderTo('read', {
           width: innerWidth,
-          height: innerHeight,
-          method: 'default'
+          height: innerHeight/* ,
+          method: 'default' */
         })
         const location = getLocation(this.fileName)
         this.display(location, () => {
@@ -223,7 +221,7 @@
         // this.initGesture()
         this.parseBook()
         this.book.ready.then(() => {
-          return this.book.locations.generate(750 * (window.innerWidth / 375) * (getFontSize(this.fileName) / 16))
+          return this.book.locations.generate(/* 750 * (window.innerWidth / 375) * (getFontSize(this.fileName) / 16) */)
         }).then(locations => {
           this.navigation.forEach(nav => {
             nav.pagelist = []
@@ -293,6 +291,16 @@
       z-index: 150;
       width: 100%;
       height: 100%;
+      display: flex;
+      .left {
+        flex: 0 0 px2rem(100);
+      }
+      .center {
+        flex: 1;
+      }
+      .right {
+        flex: 0 0 px2rem(100);
+      }
     }
   }
 </style>

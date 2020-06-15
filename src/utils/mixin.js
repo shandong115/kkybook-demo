@@ -1,6 +1,6 @@
 import { mapGetters, mapActions } from 'vuex'
 import { themeList, addCss, removeAllCss, getReadTimeByMinute } from './book'
-import { getBookmark, saveLocation/* , getBookShelf, saveBookShelf */ } from './localStorage'
+/* import { getBookmark, saveLocation , getBookShelf, saveBookShelf  } from './localStorage' */
 import { gotoBookDetail, appendAddToShelf, computeId, removeAddFromShelf } from './store'
 // import { shelf } from '../api/store'
 
@@ -114,7 +114,7 @@ export const ebookMixin = {
       return themeList(this)
     },
     getSectionName() {
-      return this.section ? this.navigation[this.section].label : ''
+      return this.section >= 0 ? this.navigation[this.section].label : ''
     }
   },
   methods: {
@@ -160,7 +160,7 @@ export const ebookMixin = {
       }
     },
     refreshLocation() {
-      const currentLocation = this.currentBook.rendition.currentLocation()
+      /* const currentLocation = this.currentBook.rendition.currentLocation()
       if (currentLocation && currentLocation.start) {
         const startCfi = currentLocation.start.cfi
         const progress = this.currentBook.locations.percentageFromCfi(startCfi)
@@ -188,7 +188,7 @@ export const ebookMixin = {
         } else {
           this.setPaginate('')
         }
-      }
+      } */
     },
     display(target, cb) {
       if (target) {
