@@ -18,7 +18,7 @@
       <div class="item-msg">
         <span class="book-msg">{{item.title}}</span>
         <span class="book-msg">{{item.author}}</span>
-        <span class="book-msg">文件稍大（{{item.size}}），正在为您拼命加载 。。。</span>
+        <span class="book-msg">文件稍大（{{bookSize}}），正在为您拼命加载 。。。</span>
       </div>
       <vue-loading type="spin" color="#222"
             :size="{ width: '50px', height: '50px' }"></vue-loading>
@@ -39,6 +39,23 @@
 
   export default {
     mixins: [ebookMixin, bookCityMixin],
+    computed: {
+      bookSize() {
+        var bs
+        if (this.item.size < 1024) {
+          bs = this.item.size + 'B'
+        } else if ((this.item.size >= 1024) && (this.item.size < 1024 * 1024)) {
+          bs = (this.item.size / 1024).toFixed(1) + 'KB'
+        } else if ((this.item.size >= 1024 * 1024) && (this.item.size < 1024 * 1024 * 1024)) {
+          bs = (this.item.size / (1024 * 1024)).toFixed(1) + 'MB'
+        } else if ((this.item.size >= 1024 * 1024 * 1024) && (this.item.size < 1024 * 1024 * 1024 * 1024)) {
+          bs = (this.item.size / (1024 * 1024 * 1024)).toFixed(1) + 'GB'
+        } else {
+          bs = 'too much big'
+        }
+        return bs
+      }
+    },
     components: {
       EbookReader,
       EbookTitle,

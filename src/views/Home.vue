@@ -92,23 +92,26 @@ export default {
       display: flex;
       flex-flow: row wrap;
       justify-content: center;
-      background-color: #EEEEEE;
+      background-color: #888;
       .book-item {
         .one-book {
           width: px2rem(195);
           height: px2rem(260);
           background-repeat: no-repeat;
           background-size: 100% 100%;
-          border: px2rem(4) solid #EEEEEE;
+          border: px2rem(4) solid #888;
           box-sizing: border-box;
           cursor: pointer;
+          .one-book:hover {
+            border:3px solid #FFF;
+          }
         }
       }
     }
     .pageNav {
       display: flex;
       @include center;
-      height: px2rem(100);
+      height: px2rem(80);
       width: 100%;
       .pagination {
         height: px2rem(40);
