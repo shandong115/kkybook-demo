@@ -102,9 +102,9 @@ export default {
           border: px2rem(4) solid #888;
           box-sizing: border-box;
           cursor: pointer;
-          .one-book:hover {
-            border:3px solid #FFF;
-          }
+        }
+        .one-book:hover {
+          border:2px solid #FFF;
         }
       }
     }
