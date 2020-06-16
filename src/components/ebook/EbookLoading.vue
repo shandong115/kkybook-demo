@@ -47,8 +47,8 @@
         this.$refs.mask.forEach((item, index) => {
           const mask = this.$refs.mask[index]
           const line = this.$refs.line[index]
-          let maskWidth = this.maskWidth[index]
-          let lineWidth = this.lineWidth[index]
+          const maskWidth = this.maskWidth[index]
+          const lineWidth = this.lineWidth[index]
           if (index === 0) {
             if (this.add && maskWidth.value < 16) {
               maskWidth.value++
@@ -59,13 +59,13 @@
             }
           } else {
             if (this.add && maskWidth.value < 16) {
-              let preMaskWidth = this.maskWidth[index - 1]
+              const preMaskWidth = this.maskWidth[index - 1]
               if (preMaskWidth.value >= 8) {
                 maskWidth.value++
                 lineWidth.value--
               }
             } else if (!this.add && lineWidth.value < 16) {
-              let preLineWidth = this.lineWidth[index - 1]
+              const preLineWidth = this.lineWidth[index - 1]
               if (preLineWidth.value >= 8) {
                 maskWidth.value--
                 lineWidth.value++

@@ -3,7 +3,9 @@
     <span class="slogen">快书，点亮世界，点亮你！</span>
     <div class="books-wrapper">
       <div class="book-item" v-for="(item, index) in pageItems" :key="index">
-        <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}" @click="HandlerBookClick(item)"></div>
+        <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}" @click="HandlerBookClick(item)">
+          <span class="book-info">{{(item.size/1024).toFixed(1)}}KB</span>
+        </div>
       </div>
     </div>
     <div class="pageNav">
@@ -38,6 +40,12 @@ import { bookCityMixin } from '@/utils/mixin'
 export default {
   mixins: [bookCityMixin],
   methods: {
+    ComingIn() {
+      console.log('mounse in...')
+    },
+    ComingOut() {
+      console.log('Coming out...')
+    },
     clickCallback (pagNum) {
       console.log('clicked: ' + pagNum)
       this.reloadRouterView()
@@ -82,10 +90,13 @@ export default {
   .home {
     // overflow: auto;
     .slogen{
-      font-size: px2rem(15);
+      font-size: px2rem(20);
       @include center;
       border-bottom: px2rem(2) solid purple;
       padding-bottom: px2rem(15);
+      padding-top: px2rem(15);
+      background-color: #ccc;
+      font-weight: bold;
      // background: #7d8188;
     }
     .books-wrapper {
@@ -103,6 +114,9 @@ export default {
           box-sizing: border-box;
           cursor: pointer;
         }
+        .book-info {
+          background-color: #FFFFFF;
+        }
         .one-book:hover {
           border:2px solid #FFF;
         }
@@ -113,9 +127,10 @@ export default {
       @include center;
       height: px2rem(80);
       width: 100%;
+      background-color: #ccc;
       .pagination {
         height: px2rem(40);
-        background-color: white;
+        background-color: #ccc;
       }
     }
   }
