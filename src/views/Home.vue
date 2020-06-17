@@ -3,8 +3,8 @@
     <span class="slogen">快书，点亮世界，点亮你！</span>
     <div class="books-wrapper">
       <div class="book-item" v-for="(item, index) in pageItems" :key="index">
-        <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}" @click="HandlerBookClick(item)">
-          <span class="book-info">{{(item.size/1024).toFixed(1)}}KB</span>
+        <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}" @click="HandlerBookClick(item)" :title="item.title+'\n'+item.author+'\n'+(item.size/1024).toFixed(1)+'KB'">
+          <!-- <span class="book-info" :style="{display: none}">{{(item.size/1024).toFixed(1)}}KB</span> -->
         </div>
       </div>
     </div>
@@ -95,7 +95,7 @@ export default {
       border-bottom: px2rem(2) solid purple;
       padding-bottom: px2rem(15);
       padding-top: px2rem(15);
-      background-color: #ccc;
+      background-color: #ddd;
       font-weight: bold;
      // background: #7d8188;
     }
@@ -127,10 +127,10 @@ export default {
       @include center;
       height: px2rem(80);
       width: 100%;
-      background-color: #ccc;
+      background-color: #ddd;
       .pagination {
         height: px2rem(40);
-        background-color: #ccc;
+        background-color: #ddd;
       }
     }
   }
