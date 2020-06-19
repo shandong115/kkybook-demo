@@ -4,30 +4,34 @@
     <div class="books-wrapper">
       <div class="book-item" v-for="(item, index) in pageItems" :key="index">
         <div class="one-book" :style="{backgroundImage:`url('${item.img_path}')`}" @click="HandlerBookClick(item)" :title="item.title+'\n'+item.author+'\n'+(item.size/1024).toFixed(1)+'KB'">
-          <!-- <span class="book-info" :style="{display: none}">{{(item.size/1024).toFixed(1)}}KB</span> -->
         </div>
       </div>
     </div>
     <div class="pageNav">
-      <Paginate
-              :v-model="currentPage"
-              :force-page="currentPage"
-              :value="currentPage"
-              :page-count="totalPages"
-              :margin-pages="2"
-              :page-range="5"
-              :container-class="'pagination'"
-              :page-class="'page-item'"
-              :page-link-class="'page-link-item'"
-              :prev-class="'prev-item'"
-              :prev-link-class="'prev-link-item'"
-              :next-class="'next-item'"
-              :next-link-class="'next-link-item'"
-              :break-view-class="'break-view'"
-              :break-view-link-class="'break-view-link'"
-              :first-last-button="true"
-              :click-handler="clickCallback"
-            ></Paginate>
+      <div class="navg">
+        <Paginate
+                :v-model="currentPage"
+                :force-page="currentPage"
+                :value="currentPage"
+                :page-count="totalPages"
+                :margin-pages="2"
+                :page-range="5"
+                :container-class="'pagination'"
+                :page-class="'page-item'"
+                :page-link-class="'page-link-item'"
+                :prev-class="'prev-item'"
+                :prev-link-class="'prev-link-item'"
+                :next-class="'next-item'"
+                :next-link-class="'next-link-item'"
+                :break-view-class="'break-view'"
+                :break-view-link-class="'break-view-link'"
+                :first-last-button="true"
+                :click-handler="clickCallback"
+              ></Paginate>
+      </div>
+      <div class="copyright">
+        <span>Copyright © 2020</span>
+      </div>
     </div>
   </div>
 </template>
@@ -124,13 +128,26 @@ export default {
     }
     .pageNav {
       display: flex;
+      flex-direction: column;
       @include center;
       height: px2rem(80);
       width: 100%;
       background-color: #ddd;
-      .pagination {
+      .navg {
+        @include center;
         height: px2rem(40);
+        width: 100%;
         background-color: #ddd;
+        margin-bottom: px2rem(10);
+      }
+      .copyright {
+        display: flex;
+        width: 100%;
+        height: px2rem(20);
+        @include center;
+        font-size: px2rem(15);
+        color: #fff;
+        background-color: #888;
       }
     }
   }

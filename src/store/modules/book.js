@@ -9,7 +9,7 @@ const book = {
     defaultTheme: 'Default',
     bookAvailable: false,
     progress: 0,
-    section: -1,
+    section: 0,
     isPaginating: true,
     currentBook: null,
     navigation: null,

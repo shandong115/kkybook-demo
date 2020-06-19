@@ -29,13 +29,13 @@
           <span class="slide-contents-book-author-text">{{metadata.creator}}</span>
         </div>
       </div>
-      <div class="slide-contents-book-progress-wrapper">
+      <!-- <div class="slide-contents-book-progress-wrapper">
         <div class="slide-contents-book-progress">
           <span class="progress">{{progress + '%'}}</span>
           <span class="progress-text">{{$t('book.haveRead2')}}</span>
         </div>
         <div class="slide-contents-book-time">{{getReadTimeText()}}</div>
-      </div>
+      </div> -->
     </div>
     <scroll class="slide-contents-list"
             :top="156"

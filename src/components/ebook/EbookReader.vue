@@ -1,10 +1,14 @@
 <template>
   <div class="ebook-reader">
     <div id="read"></div>
-    <div class="ebook-reader-mask">
-         <div class="left" @click="prevPage"></div>
+    <div class="ebook-reader-mask" tabindex="1" @keyup.up="prevPage" @keyup.left="prevPage" @keyup.down="nextPage" @keyup.right="nextPage" @keyup.enter="nextPage" @keyup.space="nextPage">
+         <div class="left" @click="prevPage">
+           <span class="icon-back" @click="prevPage"></span>
+         </div>
          <div class="center" @click="toggleTitleAndMenu"></div>
-         <div class="right" @click="nextPage"></div>
+         <div class="right" @click="nextPage">
+           <span class="icon-forward" @click="nextPage"></span>
+         </div>
     </div>
   </div>
 </template>
@@ -294,12 +298,20 @@
       display: flex;
       .left {
         flex: 0 0 px2rem(100);
+        @include left;
+        .icon-back {
+          font-size: px2rem(30);
+        }
       }
       .center {
         flex: 1;
       }
       .right {
         flex: 0 0 px2rem(100);
+        @include right;
+        .icon-forward {
+          font-size: px2rem(30);
+        }
       }
     }
   }
